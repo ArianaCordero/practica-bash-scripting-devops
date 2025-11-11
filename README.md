@@ -316,7 +316,7 @@ sudo apt install -y bash git nginx mailutils cron
 ### Instalación del Proyecto
 ```bash
 # 1. Clonar repositorio
-git clone https://github.com/ArianaCordero/bash-scripting-practice.git
+git clone https://github.com/ArianaCordero/bash-scripting-devops
 cd bash-scripting-practice
 
 # 2. Asignar permisos de ejecución
@@ -589,7 +589,7 @@ Los scripts desarrollados son directamente aplicables en:
 ---
 
 **Repositorio del Proyecto:**  
-https://github.com/ArianaCordero/bash-scripting-practice
+https://github.com/ArianaCordero/practica-bash-scripting-devops
 
 **Repositorio de Pruebas (Deploy):**  
 https://github.com/ArianaCordero/test-webapp

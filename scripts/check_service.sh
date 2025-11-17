@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Verificar que se pasó un parámetro
+# Verifica: se pasó un parámetro
 if [ -z "$1" ]; then
     echo "Error: Debes proporcionar el nombre del servicio"
     echo "Uso: ./check_service.sh <nombre_servicio>"

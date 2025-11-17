@@ -7,7 +7,7 @@ TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
 echo "[$TIMESTAMP] ========== Inicio de despliegue ==========" >> $DEPLOY_LOG
 
-# Verificar si el directorio ya existe y tiene git
+# Verifica si el directorio ya existe y tiene git
 if [ -d "$APP_DIR/.git" ]; then
     echo "[$TIMESTAMP] Actualizando repositorio existente..." >> $DEPLOY_LOG
     echo "[INFO] Actualizando codigo..."
@@ -39,7 +39,7 @@ else
     echo "[OK] Codigo descargado correctamente"
 fi
 
-# Reiniciar servicio Nginx
+# Reinicia Nginx
 echo "[$TIMESTAMP] Reiniciando Nginx..." >> $DEPLOY_LOG
 echo "[INFO] Reiniciando servicio web..."
 

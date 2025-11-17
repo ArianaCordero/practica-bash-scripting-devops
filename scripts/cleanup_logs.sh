@@ -11,7 +11,7 @@ mkdir -p $BACKUP_DIR
 
 echo "[$DATE_READABLE] ========== Inicio de limpieza ==========" >> $CLEANUP_LOG
 
-# Buscar archivos de logs con mas de 7 dias
+# Buscar archivos de logs con + 7 dias
 OLD_FILES=$(find $LOG_DIR -name "*.log" -type f -mtime +7 ! -name "cleanup_actions.log" ! -name "service_status.log")
 
 if [ -z "$OLD_FILES" ]; then
@@ -20,18 +20,18 @@ if [ -z "$OLD_FILES" ]; then
     exit 0
 fi
 
-# Comprimir archivos antiguos
+# Comprime archivos antiguos
 ARCHIVE_NAME="logs_backup_$TIMESTAMP.tar.gz"
 echo "[$DATE_READABLE] Comprimiendo archivos antiguos..." >> $CLEANUP_LOG
 
 tar -czf $BACKUP_DIR/$ARCHIVE_NAME -C $LOG_DIR $(basename -a $OLD_FILES) 2>/dev/null
 
-# Verificar que la compresion fue exitosa
+# Verificar que la compresion 
 if [ $? -eq 0 ]; then
     echo "[$DATE_READABLE] Archivo comprimido: $ARCHIVE_NAME" >> $CLEANUP_LOG
     echo "[OK] Archivos comprimidos exitosamente: $ARCHIVE_NAME"
     
-    # Eliminar archivos originales
+    # Elimina archivos originales
     echo "$OLD_FILES" | while read file; do
         rm -f "$file"
         echo "[$DATE_READABLE] Eliminado: $(basename $file)" >> $CLEANUP_LOG

@@ -18,7 +18,7 @@ echo "========================================" >> $METRICS_LOG
 echo "[$TIMESTAMP] Reporte de Sistema" >> $METRICS_LOG
 echo "========================================" >> $METRICS_LOG
 
-# Funcion para obtener uso de CPU (convertir coma a punto)
+# Funcion para obtener uso  CPU (convertir coma a punto)
 get_cpu_usage() {
     CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 | tr ',' '.')
     if [ -z "$CPU" ]; then
@@ -27,13 +27,13 @@ get_cpu_usage() {
     echo $CPU | awk '{printf "%.0f", $1}'
 }
 
-# uso de RAM
+# uso RAM
 get_ram_usage() {
     RAM=$(free | grep Mem | awk '{printf "%.0f", ($3/$2) * 100}')
     echo $RAM
 }
 
-# uso de disco
+# uso disco
 get_disk_usage() {
     DISK=$(df -h / | awk 'NR==2 {print $5}' | cut -d'%' -f1)
     echo $DISK
@@ -44,7 +44,7 @@ CPU_USAGE=$(get_cpu_usage)
 RAM_USAGE=$(get_ram_usage)
 DISK_USAGE=$(get_disk_usage)
 
-# Guardar metricas en el log diario
+# Guarda metricas en el log diario
 echo "CPU: ${CPU_USAGE}%" >> $METRICS_LOG
 echo "RAM: ${RAM_USAGE}%" >> $METRICS_LOG
 echo "DISK: ${DISK_USAGE}%" >> $METRICS_LOG
